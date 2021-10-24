@@ -1,36 +1,61 @@
 *{
-            background-color: #181e36;
-            font-family: 'Courier';
-        }
-        body {
-            padding: 2%;
-        }
-        canvas {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-        img {
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-        p {
-            padding-top: 2%;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            color: #3794e6;
-            font-size: 1.2vh;
-        }
-        #time {
-            color: #3794e6;
-            font-style: italic;
-            font-weight: 600;
-            font-size: 6vh;
-            display: block;
-            text-align: center;
-            margin: auto;
-        }
+    font-family: 'Courier';
+    background-color: #191716;
+    
+}
+html, body {
+    margin: 0;
+    height: 96%;
+}
+body {
+    padding: 2%;
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+}
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 390;
+    height: 390;
+}
+body div {
+    width: 100%; 
+    height: 100%;
+}
+img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    filter: hue-rotate(200deg);
+}
+p {
+    padding-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: #E6AF2E;
+    font-size: 1.2vh;
+}
+#time {
+    color: #E6AF2E;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 6vh;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
+.footer  {
+    margin-top: 1%;
+    display: table; 
+    overflow: hidden;
+}
+
+.footer div {
+    display: table-cell; 
+    vertical-align: middle;
+}

@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clockjs</title>
-    <script type="application/javascript" src="script.js"></script>
+    <script type="application/javascript" src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="favicon.png"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="draw();">
     <div id='time'></div>
-    <canvas id="canvas" width="450" height="450"></canvas>
-    <p align='center'>Designed by</p>
-    <img src='assinatura.png' width=150>
+    <div>
+        <canvas id="canvas" width="390" height="390"></canvas>
+    </div>
+    <div class='footer'>
+        <div>
+            <p align='center'>Designed by</p>
+            <img src='assinatura.png' width=150>
+        </div>
+    </div>
 </body>
 </html>
