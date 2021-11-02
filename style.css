@@ -1,6 +1,6 @@
 *{
     font-family: 'Courier';
-    background-color: #191716;
+    background-color: #261b2e;
     
 }
 html, body {
@@ -30,18 +30,18 @@ img {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    filter: hue-rotate(200deg);
+    /* filter: hue-rotate(200deg); */
 }
 p {
     padding-top: 2%;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    color: #E6AF2E;
+    color: #ff8800;
     font-size: 1.2vh;
 }
 #time {
-    color: #E6AF2E;
+    color: #ff8800;
     font-style: italic;
     font-weight: 600;
     font-size: 6vh;

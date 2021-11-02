@@ -1,13 +1,13 @@
 let offset = 20;
-let watchColor = "#E6AF2E"
-let secondsColor = "#E6AF2E"
-let hoursColor = "#E6AF2E"
-let hoursPointerColor = "#E6AF2E"
-let minutesPointerColor = "#E6AF2E"
-let secondsPointerColor = "#E6AF2E"
-let labelColor = "#BEB7A4"
-let centerDotColor = "#E6AF2E"
-let textColor = "#E6AF2E"
+let watchColor = "#ff8800"
+let secondsColor = "#ff8800"
+let hoursColor = "#ff8800"
+let hoursPointerColor = "#ff8800"
+let minutesPointerColor = "#ff8800"
+let secondsPointerColor = "#ff8800"
+let labelColor = "#5e5eff"
+let centerDotColor = "#5e5eff"
+let textColor = "#ff8800"
 let firstGradientColor = "#6b4a38"
 let secondGradientColor = "#77533f"
 let thirdGradientColor = "#6b4a38"
@@ -54,7 +54,7 @@ function draw() {
 
         // ctx.fillStyle = grd;
         ctx.strokeStyle = watchColor
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 3;
         ctx.stroke(outerCircle);
 
         ctx.shadowBlur = 0;
@@ -75,11 +75,11 @@ function draw() {
 
         ctx.restore()
         
-        ctx.font = "italic 12px Arial";
+        ctx.font = "14px Times New Roman";
         ctx.textAlign = "center"
         ctx.fillStyle = textColor;
         ctx.textBaseline = 'middle';
-        ctx.fillText("Leonam T.V.", centerX, centerY + offset * 3 )
+        ctx.fillText("L  E  O  N  A  M     T.   V.", centerX, centerY + offset * 3 )
 
         let outerInnerCircle = new Path2D();
         outerInnerCircle.arc(centerX, centerY, Math.min(centerX, centerY) - offset * 2, 0, 2 * Math.PI);
@@ -94,8 +94,8 @@ function draw() {
         ctx.shadowBlur = 10
         ctx.shadowOffsetY = 5
 
-        let secondX = centerX + 4 * radius / 5 * Math.cos ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2  );
-        let secondY = centerY + 4 * radius / 5 * Math.sin ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2  );
+        let secondX = centerX + 4 * radius / 5 * Math.cos ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2 ) - 10;
+        let secondY = centerY + 4 * radius / 5 * Math.sin ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2 ) - 10;
 
         ctx.lineWidth = 2;
         ctx.strokeStyle = secondsPointerColor;
