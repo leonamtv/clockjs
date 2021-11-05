@@ -39,6 +39,7 @@ p {
     display: block;
     color: #ff8800;
     font-size: 1.2vh;
+    letter-spacing: 15px;
 }
 #time {
     color: #ff8800;
