@@ -150,8 +150,8 @@ function draw() {
         ctx.shadowBlur = 10
         ctx.shadowOffsetY = 5
 
-        let secondX = centerX + 4 * ( radius - 10 ) / 5 * Math.cos ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2 ) ;
-        let secondY = centerY + 4 * ( radius - 10 ) / 5 * Math.sin ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2 ) ;
+        let secondX = centerX + ( 4 * radius / 5 - 10 ) * Math.cos ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2 );
+        let secondY = centerY + ( 4 * radius / 5 - 10 ) * Math.sin ( 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2 );
 
         ctx.lineWidth = 2;
         ctx.strokeStyle = secondsPointerColor;
