@@ -110,10 +110,7 @@ function draw() {
         ctx.save()
 
         let labels = [ 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII' ]
-        let textAngle = - 5 * Math.PI / 6
-        // let textAngle = 17 * Math.PI / 12
-        // let textAngle = 20 * Math.PI / 30
-
+        let textAngle = Math.PI / 6
         ctx.save()
         ctx.translate(centerX, centerY)
         ctx.rotate(textAngle)
@@ -122,7 +119,7 @@ function draw() {
             ctx.textAlign = "center"
             ctx.fillStyle = labelColor;
             ctx.textBaseline = 'middle';
-            ctx.fillText(label, 0, ( 0.8 * radius - 0.5 * offset ))
+            ctx.fillText(label, 0, -( 0.8 * radius - 0.5 * offset ))
             ctx.rotate( Math.PI / 6 )
         })
         ctx.restore()
