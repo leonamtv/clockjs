@@ -1,13 +1,13 @@
-let offset = 25;
-let watchColor = "#ff8800"
-let secondsColor = "#ff8800"
-let hoursColor = "#ff8800"
-let hoursPointerColor = "#ff8800"
-let minutesPointerColor = "#ff8800"
-let secondsPointerColor = "#ff8800"
+let offset = 40;
+let watchColor = "#17c858"
+let secondsColor = "#17c858"
+let hoursColor = "#17c858"
+let hoursPointerColor = "#17c858"
+let minutesPointerColor = "#17c858"
+let secondsPointerColor = "#17c858"
 let labelColor = "#5e5eff"
 let centerDotColor = "#5e5eff"
-let textColor = "#ff8800"
+let textColor = "#17c858"
 let firstGradientColor = "#6b4a38"
 let secondGradientColor = "#77533f"
 let thirdGradientColor = "#6b4a38"
@@ -15,31 +15,30 @@ let shadowColor = "rgba(0, 0, 0, 0.7)"
 let isVertical = document.documentElement.scrollWidth < document.documentElement.scrollHeight
 let screenSize = Math.min(document.documentElement.scrollWidth, document.documentElement.scrollHeight);
 
-let hourCircleColor = "#59ffa9"
-let minuteCircleColor = "#ff8800"
+let hourCircleColor = "#315fea"
+let minuteCircleColor = "#17c858"
 let secondsCircleColor = "#5e5eff"
 
-let degreeTraceColor = "#ff8800"
-let secondTraceColor = "#ff8800"
-let hourTraceColor = "#ff8800"
+let degreeTraceColor = "#17c858"
+let secondTraceColor = "#17c858"
+let hourTraceColor = "#17c858"
 
 let secondPointerWidth = 15
 let hourPointerWidth = 25
 let minutePointerWidth = 20
 
+let externalCirclesWidth = 8
+
+if ( isVertical ) {
+    offset = 20
+    externalCirclesWidth = 3
+}
 
 window.addEventListener('resize', (_) => {
     draw()
     isVertical = document.documentElement.scrollWidth < document.documentElement.scrollHeight
     screenSize = Math.min(document.documentElement.scrollWidth, document.documentElement.scrollHeight);
 });
-
-setInterval(
-    function(){
-        draw();
-    }, 
-    1000
-);
 
 function draw() {
     let canvas = document.getElementById("canvas");
@@ -50,13 +49,12 @@ function draw() {
     let div    = document.getElementById("time");
     let date = new Date()
 
-
-
     if (canvas.getContext) {
 
         div.innerText = (date.getHours()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" +
                         (date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" +
-                        (date.getSeconds()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+                        (date.getSeconds()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ":" +
+                        (date.getMilliseconds()).toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping:false})
 
         let ctx = canvas.getContext("2d");
         let centerX = canvas.width  / 2;
@@ -65,38 +63,28 @@ function draw() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // ctx.fillStyle = "black";
-        // ctx.fillRect(0, 0, canvas.width, canvas.height);
-        // let grd = ctx.createLinearGradient(0, 0, radius * 2, radius * 2);
-        // grd.addColorStop(0,   firstGradientColor);
-        // grd.addColorStop(0.5, secondGradientColor);
-        // grd.addColorStop(1,   thirdGradientColor);
-
         let outerCircle = new Path2D();
         let outerHourCircle = new Path2D();
         let outerMinuteCircle = new Path2D();
         let outerSecondCircle = new Path2D();
         
         outerCircle.arc(centerX, centerY, Math.min(centerX, centerY) - offset, 0, 2 * Math.PI);
-        outerHourCircle.arc(centerX, centerY, Math.min(centerX, centerY) - ( 0.7 * offset ), - Math.PI / 2, ( 30 * ( date.getHours() % 12 ) + 0.5 * date.getMinutes()) * Math.PI / 180 - Math.PI / 2 );
-        outerMinuteCircle.arc(centerX, centerY, Math.min(centerX, centerY) - ( 0.45 * offset ), - Math.PI / 2, 6 * date.getMinutes() * Math.PI / 180 - Math.PI / 2 );
+        outerHourCircle.arc(centerX, centerY, Math.min(centerX, centerY) - ( 0.75 * offset ), - Math.PI / 2, ( 30 * ( date.getHours() % 12 ) + 0.5 * date.getMinutes()) * Math.PI / 180 - Math.PI / 2 );
+        outerMinuteCircle.arc(centerX, centerY, Math.min(centerX, centerY) - ( 0.5 * offset ), - Math.PI / 2, 6 * date.getMinutes() * Math.PI / 180 - Math.PI / 2 );
         outerSecondCircle.arc(centerX, centerY, Math.min(centerX, centerY) - ( 0.25 * offset ), - Math.PI / 2, 6 * date.getSeconds() * Math.PI / 180 - Math.PI / 2);
-        // ctx.fillStyle = grd;
 
         ctx.lineCap = "round";
 
         ctx.strokeStyle = hourCircleColor
-        ctx.lineWidth = 3;
+        ctx.lineWidth = externalCirclesWidth;
 
         ctx.stroke(outerHourCircle);
 
         ctx.strokeStyle = minuteCircleColor
-        ctx.lineWidth = 3;
 
         ctx.stroke(outerMinuteCircle);
 
         ctx.strokeStyle = secondsCircleColor
-        ctx.lineWidth = 3;
 
         ctx.stroke(outerSecondCircle);
 
@@ -188,10 +176,10 @@ function draw() {
         ctx.fill(circle);
         ctx.fill(); 
 
-        let outerCircleRadius      = radius - offset;
-        let bigInnerCircleRadius   = radius - offset - 0.4 * offset;
-        let smallInnerCircleRadius = radius - offset - 0.85 * offset;
-        let degreeInnerCircleRadius = radius - offset - 0.7 * offset;
+        let outerCircleRadius      = radius - offset * 0.8;
+        let bigInnerCircleRadius   = radius - offset - 0.3 * offset;
+        let smallInnerCircleRadius = radius - offset - 0.9 * offset;
+        let degreeInnerCircleRadius = radius - offset - 0.8 * offset;
 
         ctx.lineWidth = 1.5;
 
@@ -233,4 +221,8 @@ function draw() {
             ctx.stroke()
         }
     }
+    window.requestAnimationFrame(draw)
 }
+
+
+window.requestAnimationFrame(draw)
